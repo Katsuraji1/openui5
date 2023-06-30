@@ -4,13 +4,15 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel",
 		"sap/ui/core/routing/History",
 		"zjblessons/ControlTaskErahovets/model/formatter",
-	"sap/m/MessageToast"
+	"sap/m/MessageToast",
+	"sap/ui/core/Fragment"
 	], function (
 		BaseController,
 	JSONModel,
 	History,
 	formatter,
-	MessageToast
+	MessageToast,
+	Fragment
 	) {
 		"use strict";
 
@@ -167,7 +169,27 @@ sap.ui.define([
 				this.getModel("objectView").setProperty("/selectedKeyITB", sSelectedKey);
 
 				if(sSelectedKey === 'panels'){
-					
+					this._loadFragmentPanels()
+				}
+			},
+
+			_loadFragmentPanels: function(){
+				if(!this._pFragmentPanels){
+					this._pFragmentPanels = Fragment.load({
+						name:"zjblessons.ControlTaskErahovets.view.fragment.Panels",
+						controller: this,
+						id: this.getView().getId(),
+					}).then(oPanels => {
+						this._pFragmentPanels = oPanels;
+						this.getView().addDependent(this._pFragmentPanels);
+						return Promise.resolve(oPanels);
+					});
+
+					this._pFragmentPanels.then((oPanels) => {
+						const IconTabBar = this.byId('idIconTabBarMulti');
+						IconTabBar.removeAllContent();
+						IconTabBar.insertContent(oPanels, 1);
+					})
 				}
 			}
 
