@@ -33,7 +33,9 @@ sap.ui.define([
 				var iOriginalBusyDelay,
 					oViewModel = new JSONModel({
 						busy : true,
-						delay : 0
+						delay : 0,
+						editMode: false,
+						selectedKeyITB: 'form'
 					});
 
 				this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
@@ -142,6 +144,31 @@ sap.ui.define([
 				oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
 				oViewModel.setProperty("/shareSendEmailMessage",
 				oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
+			},
+
+			_setEditMode(bMode){
+				this.getModel('objectView').setProperty('/editMode', bMode)
+			},
+
+			onPressEditMaterial: function(){
+				this._setEditMode(true)
+			},
+
+			onPressCancelEditMaterial: function(){
+				this._setEditMode(false)
+			},
+
+			onPressSaveEditMaterial: function(){
+				this._setEditMode(false)
+			},
+
+			onSelectITB: function(oEvent){
+				const sSelectedKey = oEvent.getSource().getSelectedKey();
+				this.getModel("objectView").setProperty("/selectedKeyITB", sSelectedKey);
+
+				if(sSelectedKey === 'panels'){
+					
+				}
 			}
 
 		});

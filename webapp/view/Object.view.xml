@@ -1,6 +1,8 @@
 <mvc:View
 	controllerName="zjblessons.ControlTaskErahovets.controller.Object"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:semantic="sap.f.semantic">
 
@@ -15,15 +17,151 @@
 			<Title text="{MaterialText}" />
 		</semantic:titleHeading>
 
+		<semantic:titleCustomTextActions>
+			<Button tooltip='Edit' 
+				text='Edit' 
+				type='Emphasized'
+				visible="{= !${objectView>/editMode}}"
+				press="onPressEditMaterial"/>
+			<Button tooltip='Cancel' 
+				text='Cancel'
+				visible='{objectView>/editMode}'
+				press="onPressCancelEditMaterial"/>
+			<Button tooltip='Save' 
+				text='Save' 
+				visible='{objectView>/editMode}'
+				press="onPressSaveEditMaterial"/>
+		</semantic:titleCustomTextActions>
+
 		<semantic:headerContent>
-			<ObjectNumber
-			/>
+		<IconTabBar
+		select="onSelectITB"
+		id="idIconTabBarMulti"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter icon="sap-icon://form" text="Form" key="form">
+				<f:Form
+			editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer title="Material Info">
+					<f:formElements>
+						<f:FormElement label="MaterialID">
+								<f:fields>
+									<Text text="{MaterialID}" visible="{= !${objectView>/editMode}}"/>
+									<Input value="{MaterialID}" visible="{= ${objectView>/editMode}}"/>
+								</f:fields>
+						</f:FormElement>
+						<f:FormElement label="MaterialText">
+							<f:fields>
+								<Text text="{MaterialText}" visible="{= !${objectView>/editMode}}"/>
+								<Input value="{MaterialText}" visible="{= ${objectView>/editMode}}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="MaterialDescription">
+							<f:fields>
+								<Text text="{MaterialDescription}" visible="{= !${objectView>/editMode}}" />
+								<Input value="{MaterialDescription}" visible="{= ${objectView>/editMode}}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Rating">
+							<f:fields>
+								<Text text="{Rating}" visible="{= !${objectView>/editMode}}" />
+								<Input value="{Rating}" visible="{= ${objectView>/editMode}}"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+                <f:FormContainer title="Groups Info">
+					<f:formElements>
+					 	<f:FormElement label="GroupText">
+							<f:fields>
+								<Text text="{GroupText}" visible="{= !${objectView>/editMode}}" />
+								<Input value="{GroupText}" visible="{= ${objectView>/editMode}}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="SubGroupText">
+							<f:fields>
+								<Text text="{SubGroupText}" visible="{= !${objectView>/editMode}}" />
+								<Input value="{SubGroupText}" visible="{= ${objectView>/editMode}}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="SubGroupID">
+							<f:fields>
+								<Text text="{SubGroupID}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer title="Creation Info">
+					<f:formElements>
+						<f:FormElement label="Created">
+							<f:fields>
+								<Text text="{Created}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="CreatedByFullName">
+							<f:fields>
+								<Text text="{CreatedByFullName}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="CreatedBy">
+							<f:fields>
+								<Text text="{CreatedBy}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Modified">
+							<f:fields>
+								<Text text="{Modified}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="ModifiedByFullName">
+							<f:fields>
+								<Text text="{ModifiedByFullName}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="ModifiedBy">
+							<f:fields>
+								<Text text="{ModifiedBy}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer title="More info">
+					<f:formElements>
+					 	<f:FormElement label="Language">
+							<f:fields>
+								<Text text="{Language}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+			</IconTabFilter>
+			<IconTabFilter
+				text="Panels"
+				icon="sap-icon://bookmark"
+				key="panels">
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
 		</semantic:headerContent>
-
-		<semantic:sendEmailAction>
-			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
-		</semantic:sendEmailAction>
-
 
 	</semantic:SemanticPage>
 
