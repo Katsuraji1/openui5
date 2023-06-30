@@ -193,6 +193,13 @@ sap.ui.define([
 
 			onPressCell: function(oEvent){
 				this._showObject(oEvent)
+			},
+
+			onPressDelete: function(){
+				const table = this.byId("table");
+				const selectedIndex = table.getSelectedIndex();
+				const sPath = table.getContextByIndex(selectedIndex).getPath();
+				this.getModel().remove(sPath);
 			}
 		});
 	}

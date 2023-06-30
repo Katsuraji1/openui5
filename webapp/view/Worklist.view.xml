@@ -33,6 +33,12 @@
 							icon="sap-icon://account"
 						/>
 						<m:Button 
+							text="Delete"
+							press="onPressDelete"
+							type="Emphasized"
+							icon="sap-icon://delete"
+						/>
+						<m:Button 
 							text="SingleSelect"
 							press="onPressSelectInfo"
 							type="Emphasized"

@@ -260,6 +260,17 @@ sap.ui.define([
 			onBeforeCloseDialog: function(){
 				this.getModel().resetChanges();
 				this.oCreateDialog = null;
+			},
+
+			onPressDelete: function(){
+				const table = this.byId('subGroupTableID');
+				const selectedIndices = table.getSelectedIndices();
+				selectedIndices.forEach(index => {
+					const sPath = this.byId('subGroupTableID').getContextByIndex(index).getPath();
+					this.getModel().remove(sPath);
+					//чет не хочет удаляться даже через oData explorer
+					//сделал удаление для zjblessons_base_Materials на worklist
+				})
 			}
 
 		});

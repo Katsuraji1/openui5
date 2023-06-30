@@ -105,6 +105,11 @@
 							type="Emphasized"
 							press="onPressCreateSubGroup"
 						/>
+						<Button
+							text="Delete"
+							type="Emphasized"
+							press="onPressDelete"
+						/>
 					</OverflowToolbar>
 				</t:extension>
 				<t:columns>
