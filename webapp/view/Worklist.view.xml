@@ -22,7 +22,7 @@
 				}"
 				selectionMode="Single"
 				visibleRowCount="15"
-				paste="onPaste"
+				cellClick="onPressCell"
 				ariaLabelledBy="title">
 				<extension>
 					<m:OverflowToolbar style="Clear">

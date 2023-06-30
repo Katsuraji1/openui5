@@ -5,7 +5,8 @@ sap.ui.define([
 		"zjblessons/ControlTaskErahovets/model/formatter",
 		"sap/ui/model/Filter",
 		"sap/ui/model/FilterOperator",
-	"sap/m/MessageBox"
+	"sap/m/MessageBox",
+	"sap/ui/vk/Material"
 	], function (BaseController,
 	JSONModel,
 	formatter,
@@ -145,9 +146,10 @@ sap.ui.define([
 			 * @param {sap.m.ObjectListItem} oItem selected Item
 			 * @private
 			 */
-			_showObject : function (oItem) {
+			_showObject : function (oEvent) {
+				const MaterialID = oEvent.getParameters().rowBindingContext.getProperty('MaterialID')
 				this.getRouter().navTo("object", {
-					objectId: oItem.getBindingContext().getProperty("MaterialID")
+					objectId: MaterialID
 				});
 			},
 
@@ -187,6 +189,10 @@ sap.ui.define([
 				const MaterialID = selectedIndex !== -1 ? table.getContextByIndex(selectedIndex).getProperty('MaterialID') : 'Select an entry';
 	
 				MessageBox.information(MaterialID)
+			},
+
+			onPressCell: function(oEvent){
+				this._showObject(oEvent)
 			}
 		});
 	}
