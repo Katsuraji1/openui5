@@ -5,14 +5,18 @@ sap.ui.define([
 		"sap/ui/core/routing/History",
 		"zjblessons/ControlTaskErahovets/model/formatter",
 	"sap/m/MessageToast",
-	"sap/ui/core/Fragment"
+	"sap/ui/core/Fragment",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
 	], function (
 		BaseController,
 	JSONModel,
 	History,
 	formatter,
 	MessageToast,
-	Fragment
+	Fragment,
+	Filter,
+	FilterOperator
 	) {
 		"use strict";
 
@@ -189,16 +193,27 @@ sap.ui.define([
 						const IconTabBar = this.byId('idIconTabBarMulti');
 						IconTabBar.removeAllContent();
 						IconTabBar.insertContent(oPanels, 1);
-						const sObjectId = this.getView().getBindingContext().getObject().GroupID;
+						this._bindGroupTable()
+					})
+				}
+			},
+
+			_bindGroupTable: function(){
+				const sObjectId = this.getView().getBindingContext().getObject().GroupID;
 						var sObjectPath = this.getModel().createKey("zjblessons_base_Groups", {
 							GroupID :  sObjectId
 						});
 						this.byId('idProductsTable').bindElement({
 							path: "/" + sObjectPath
 						})
-					})
-				}
-			}
+			},
+
+			onSearch: function(oEvent){
+				const sValue = oEvent.getParameter('query') || oEvent.getParameter('newValue');
+				this.byId('subGroupTableID').getBinding('rows').filter(
+					new Filter('SubGroupID', FilterOperator.Contains, sValue),
+				);
+			},
 
 		});
 
