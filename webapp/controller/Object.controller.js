@@ -169,7 +169,7 @@ sap.ui.define([
 				this.getModel("objectView").setProperty("/selectedKeyITB", sSelectedKey);
 
 				if(sSelectedKey === 'panels'){
-					this._loadFragmentPanels()
+					this._loadFragmentPanels();
 				}
 			},
 
@@ -189,6 +189,13 @@ sap.ui.define([
 						const IconTabBar = this.byId('idIconTabBarMulti');
 						IconTabBar.removeAllContent();
 						IconTabBar.insertContent(oPanels, 1);
+						const sObjectId = this.getView().getBindingContext().getObject().GroupID;
+						var sObjectPath = this.getModel().createKey("zjblessons_base_Groups", {
+							GroupID :  sObjectId
+						});
+						this.byId('idProductsTable').bindElement({
+							path: "/" + sObjectPath
+						})
 					})
 				}
 			}

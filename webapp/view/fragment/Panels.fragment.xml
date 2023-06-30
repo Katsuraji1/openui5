@@ -5,7 +5,77 @@
     <VBox >
     <Panel expandable="true" headerText="Panel with a header text" width="auto" class="sapUiResponsiveMargin">
 		<content>
-			<Text text="Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat" />
+	<Table id="idProductsTable"
+		inset="false">
+		<columns>
+			<Column
+				width="8em">
+				<Text text="GroupID" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="Version" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="Language" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="GroupText" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="GroupDescription" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="Created" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="CreatedBy" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="CreatedByFullName" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="Modified" />
+			</Column>
+			<Column
+				width="8em">
+				<Text text="ModifiedBy" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						text="{GroupID}"/>
+					<ObjectIdentifier
+						text="{Version}"/>
+					<ObjectIdentifier
+						text="{Language}"/>
+					<ObjectIdentifier
+						text="{GroupText}"/>
+					<ObjectIdentifier
+						text="{GroupDescription}"/>
+					<ObjectIdentifier
+						text="{Created}"/>
+					<ObjectIdentifier
+						text="{CreatedBy}"/>
+					<ObjectIdentifier
+						text="{CreatedByFullName}"/>
+					<ObjectIdentifier
+						text="{Modified}"/>
+					<ObjectIdentifier
+						text="{ModifiedBy}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
 		</content>
 	</Panel>
     <Panel expandable="true" headerText="Panel with a header text" width="auto" class="sapUiResponsiveMargin">
