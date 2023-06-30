@@ -197,9 +197,11 @@ sap.ui.define([
 
 			onPressDelete: function(){
 				const table = this.byId("table");
-				const selectedIndex = table.getSelectedIndex();
-				const sPath = table.getContextByIndex(selectedIndex).getPath();
-				this.getModel().remove(sPath);
+				const selectedIndex = table.getSelectedIndex() ;
+				if (selectedIndex !== -1) {
+					const sPath = table.getContextByIndex(selectedIndex).getPath()
+					this.getModel().remove(sPath);
+				}
 			}
 		});
 	}
