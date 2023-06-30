@@ -20,7 +20,7 @@
 				rows="{
 					path: '/zjblessons_base_Materials'
 				}"
-				selectionMode="MultiToggle"
+				selectionMode="Single"
 				visibleRowCount="15"
 				paste="onPaste"
 				ariaLabelledBy="title">
@@ -31,7 +31,13 @@
 							press="onPressFio"
 							type="Emphasized"
 							icon="sap-icon://account"
-						></m:Button>
+						/>
+						<m:Button 
+							text="SingleSelect"
+							press="onPressSelectInfo"
+							type="Emphasized"
+							icon="sap-icon://information"
+						/>
 					</m:OverflowToolbar>
 				</extension>
 				<columns>

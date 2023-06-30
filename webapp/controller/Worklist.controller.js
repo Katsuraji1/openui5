@@ -179,6 +179,14 @@ sap.ui.define([
 						}
 					}
 				})
+			},
+
+			onPressSelectInfo: function(oEvent){
+				const table = this.byId('table');
+				const selectedIndex = table.getSelectedIndex()
+				const MaterialID = selectedIndex !== -1 ? table.getContextByIndex(selectedIndex).getProperty('MaterialID') : 'Select an entry';
+	
+				MessageBox.information(MaterialID)
 			}
 		});
 	}
