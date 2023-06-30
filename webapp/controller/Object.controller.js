@@ -3,12 +3,14 @@ sap.ui.define([
 		"zjblessons/ControlTaskErahovets/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
 		"sap/ui/core/routing/History",
-		"zjblessons/ControlTaskErahovets/model/formatter"
+		"zjblessons/ControlTaskErahovets/model/formatter",
+	"sap/m/MessageToast"
 	], function (
 		BaseController,
-		JSONModel,
-		History,
-		formatter
+	JSONModel,
+	History,
+	formatter,
+	MessageToast
 	) {
 		"use strict";
 
@@ -79,6 +81,7 @@ sap.ui.define([
 			 */
 			_onObjectMatched : function (oEvent) {
 				var sObjectId =  oEvent.getParameter("arguments").objectId;
+				MessageToast.show(sObjectId);
 				this.getModel().metadataLoaded().then( function() {
 					var sObjectPath = this.getModel().createKey("zjblessons_base_Materials", {
 						MaterialID :  sObjectId
