@@ -4,8 +4,14 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel",
 		"zjblessons/ControlTaskErahovets/model/formatter",
 		"sap/ui/model/Filter",
-		"sap/ui/model/FilterOperator"
-	], function (BaseController, JSONModel, formatter, Filter, FilterOperator) {
+		"sap/ui/model/FilterOperator",
+	"sap/m/MessageBox"
+	], function (BaseController,
+	JSONModel,
+	formatter,
+	Filter,
+	FilterOperator,
+	MessageBox) {
 		"use strict";
 
 		return BaseController.extend("zjblessons.ControlTaskErahovets.controller.Worklist", {
@@ -158,8 +164,22 @@ sap.ui.define([
 				if (aTableSearchState.length !== 0) {
 					oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("worklistNoDataWithSearchText"));
 				}
-			}
+			},
 
+			onPressFio: function(oEvent){
+				MessageBox.show('Erahovets Vladislav Aleksandrovich', {
+					titile: 'ФИО',
+					actions: [
+						MessageBox.Action.OK
+					],
+					emphasizedAction: sap.m.MessageBox.Action.OK,
+					onClose: (sAction) => {
+						if(sAction === 'OK'){
+
+						}
+					}
+				})
+			}
 		});
 	}
 );

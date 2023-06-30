@@ -26,7 +26,12 @@
 				ariaLabelledBy="title">
 				<extension>
 					<m:OverflowToolbar style="Clear">
-						<m:Title id="title" text="Products"/>
+						<m:Button 
+							text="ФИО"
+							press="onPressFio"
+							type="Emphasized"
+							icon="sap-icon://account"
+						></m:Button>
 					</m:OverflowToolbar>
 				</extension>
 				<columns>
