@@ -100,6 +100,11 @@
 							search="onSearch"
 							liveChange="onSearch"
 							width="15rem"/>
+						<Button
+							text="Create"
+							type="Emphasized"
+							press="onPressCreateSubGroup"
+						/>
 					</OverflowToolbar>
 				</t:extension>
 				<t:columns>

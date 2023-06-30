@@ -1,0 +1,34 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+    <Dialog
+			resizable='true'
+			draggable='true'
+			beforeClose='onBeforeCloseDialog'
+			title='CreateSubGroup'
+			class='sapUiSizeCompact'
+		>
+			<VBox
+				validateFieldGroup='validateFieldGroupMaterial'
+				class="sapUiSmallMargin">
+				<Label
+					required='true'
+					text='SubGroupText'/>
+				<Input
+					value="{path: 'SubGroupText'}"/> 
+			</VBox>
+			<footer>
+				<Toolbar>
+						<Button
+							text='Close'
+							press='onPressCloseCreateDialog'/>
+							<ToolbarSpacer/>
+						<Button
+							text='Create'
+							press='onPressCreateSub'
+							type="Emphasized"/>
+				</Toolbar>
+			</footer>
+		</Dialog>
+</c:FragmentDefinition>

@@ -209,11 +209,58 @@ sap.ui.define([
 			},
 
 			onSearch: function(oEvent){
-				const sValue = oEvent.getParameter('query') || oEvent.getParameter('newValue');
+				let sValue = oEvent.getParameter('query') || oEvent.getParameter('newValue');
+				if(!sValue) sValue = '';
 				this.byId('subGroupTableID').getBinding('rows').filter(
 					new Filter('SubGroupID', FilterOperator.Contains, sValue),
 				);
 			},
+
+			onPressCreateSubGroup: function(){
+				const mProps = {
+					Language: "RU",
+					Version: "A" ,
+					SubGroupID:"0"
+				};
+				
+				const oEntryContext=this.getModel().createEntry('/zjblessons_base_SubGroups', {
+					properties: mProps,
+				});
+				
+				this.loadCreateSubGroupDialog(oEntryContext);
+			},
+
+			loadCreateSubGroupDialog: function(oEntryContext){
+				if(!this.oCreateDialog){
+					this.pCreateSubGroup = Fragment.load({
+						name:"zjblessons.ControlTaskErahovets.view.fragment.SubGroupDialog",
+						controller: this,
+						id:this.getView().byId()
+					}).then(oDialog => {
+						this.oCreateDialog = oDialog;
+						this.getView().addDependent(this.oCreateDialog);
+						return Promise.resolve(oDialog);
+					});
+				}
+				this.pCreateSubGroup.then(oDialog => {
+					oDialog.setBindingContext(oEntryContext);
+					oDialog.open();
+				});
+			},
+
+			onPressCloseCreateDialog: function(oEvent){
+				oEvent.getSource().getParent().getParent().close();
+			},
+
+			onPressCreateSub: function(){
+				this.getModel().submitChanges()
+				this.oCreateDialog.close()
+			},
+
+			onBeforeCloseDialog: function(){
+				this.getModel().resetChanges();
+				this.oCreateDialog = null;
+			}
 
 		});
 
